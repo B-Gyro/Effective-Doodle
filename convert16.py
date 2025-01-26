@@ -37,12 +37,12 @@ def imageToPixelsArray(image, outputTxt, outputImage):
         img = Image.open(image)
         img = img.convert('RGB')
 
-        # Resize the image to fit within the target size while maintaining aspect ratio
         if (Y < 0):
             calculateY(img)
-        
+
         if (X):
-            img.thumbnail((X, Y), Image.Resampling.LANCZOS)
+		# Resize the image to fit within the target size while maintaining aspect ratio
+		img.thumbnail((X, Y), Image.Resampling.LANCZOS)
 
         pixel_array = np.array(img)
         color_tree = KDTree(VGA_COLORS_16)
